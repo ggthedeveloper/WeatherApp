@@ -1,4 +1,4 @@
-const BASE = "http://localhost:3000";
+const BASE = "https://weatherapp-backend-7m69.onrender.com";
 
 let map, marker, chart;
 
