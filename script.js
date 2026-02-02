@@ -211,7 +211,7 @@ async function citySuggestions(query){
   });
 }
 
-/* ===== SERVICE WORKER ===== */
-if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("service-worker.js");
-}
+// /* ===== SERVICE WORKER ===== */
+// if("serviceWorker" in navigator){
+//   navigator.serviceWorker.register("service-worker.js");
+// }
