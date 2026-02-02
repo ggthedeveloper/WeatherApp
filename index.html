@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate Weather App</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="light">
+
+
+<button class="mode" onclick="toggleMode()">🌙</button>
+
+
+<div class="app">
+<h1>GG<br>
+  🌦 Weather App</h1>
+
+<div class="search">
+  <input id="city" placeholder="Enter city" oninput="citySuggestions(this.value)">
+  <div id="suggestions"></div>
+  <button data-tip="Search weather for the entered city" onclick="getWeather()">🔍</button>
+
+<button data-tip="Use your current location to get weather" onclick="getLocation()">📍</button>
+
+<button data-tip="Search city using your voice" onclick="voiceSearch()">🎤</button>
+
+</div>
+
+
+
+<div class="current">
+  <img id="icon">
+  <h2 id="temp"></h2>
+  <p id="feels"></p>
+  <p id="desc"></p>
+  <p id="place"></p>
+
+  <div id="aqiBox">
+  <p id="aqi"></p>
+  <p id="pm"></p>
+
+  <div class="aqi-bar">
+    <div class="aqi-fill" id="aqiFill"></div>
+  </div>
+
+  <p id="health"></p>
+</div>
+
+
+  <p id="ai"></p>
+</div>
+
+<div class="chart-box">
+  <canvas id="chart"></canvas>
+</div>
+
+
+<div id="map"></div>
+
+<div class="forecast" id="forecast"></div>
+
+
+<footer class="footer">
+  <p style="font-size:12px;margin-top:14px; opacity:.7">
+    © <span id="year"></span>
+    Built by: Gaurav Gautam 🚀
+  </p>
+
+  <p style="font-size:11px; margin-top:6px; opacity:.6; line-height:1.4">
+    Note: Weather data is fetched from OpenWeather API. Values may slightly differ (±)
+    from Google Weather due to different data sources, update intervals, and calculation models.
+  </p>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
+
+
+
+</body>
+</html>

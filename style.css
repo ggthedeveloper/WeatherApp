@@ -1,0 +1,307 @@
+html, body{
+  width: 100%;
+  overflow-x: hidden;   
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui;
+}
+
+/* ===== BODY ===== */
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  transition:.5s;
+}
+
+body.light{
+  background:linear-gradient(#95e6efc3,#0476b3d7); 
+ 
+}
+body.dark{
+  background:linear-gradient(#2d4471,#0b111c);
+}
+
+/* ===== APP CARD ===== */
+.app{
+  width:340px;
+  max-width: 94vw; 
+  padding:20px;
+  text-align:center;
+  color: rgb(12, 81, 141);
+  background:#ffffffb7;
+  box-shadow:0 8px 32px rgba(17, 125, 197, 0.778);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,0.18);
+  border-radius:16px;
+}
+
+body.dark .app{
+  background:rgba(0,0,0,.6);
+  color:white;
+}
+
+/* ===== SEARCH ===== */
+.search{
+  position:relative;
+  display:flex;
+  gap:5px;
+  margin:10px 0;
+  align-items:center;
+}
+
+input, button{
+  padding:8px;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+}
+
+.search input{
+  flex:1;
+  min-width:0;
+}
+
+button{
+  background:rgb(12, 81, 141);
+  color:white;
+  cursor:pointer;
+}
+
+/* ===== DARK MODE BUTTON (DESKTOP) ===== */
+.mode{
+  position:fixed;
+  top:12px;
+  right:12px;
+  z-index:999;
+  padding:8px 10px;
+  font-size:16px;
+}
+
+/* ===== CURRENT WEATHER ===== */
+.current img{
+  width:80px;
+}
+
+/* ===== MAP ===== */
+/* #map{
+  height:160px;
+  border-radius:14px;
+  margin:12px 0;
+} */
+
+#map{
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.leaflet-container{
+  width: 100% !important;
+}
+
+/* ===== FORECAST ===== */
+.forecast{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+}
+
+.day{
+  min-width:70px;
+  padding:8px;
+  border-radius:10px;
+  background:rgba(0,0,0,.1);
+}
+
+body.dark .day{
+  background:rgba(255,255,255,.2);
+}
+
+/* ===== CITY SUGGESTIONS ===== */
+#suggestions{
+  position:absolute;
+  top:45px;
+  left:0;
+  width:100%;
+  max-height:180px;
+  overflow-y:auto;
+  border-radius:10px;
+  background:#fff;
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  z-index:20;
+}
+
+#suggestions div{
+  padding:8px 12px;
+  cursor:pointer;
+  border-bottom:1px solid #eee;
+}
+
+#suggestions div:hover{
+  background:#4facfe;
+  color:white;
+}
+
+body.dark #suggestions{
+  background:#1e1e1e;
+  color:white;
+}
+
+/* ===== CHART ===== */
+.chart-box{
+  width:100%;
+  height:220px;
+  position:relative;
+}
+
+#chart{
+  width:100%!important;
+  height:100%!important;
+  display:block;
+}
+
+/* ===== AQI ===== */
+#aqiBox{
+  display:none;
+  margin-top:8px;
+  font-size:13px;
+  animation:fadeIn .4s ease forwards;
+}
+
+.aqi-bar{
+  width:100%;
+  height:8px;
+  background:rgba(0,0,0,0.15);
+  border-radius:10px;
+  overflow:hidden;
+  margin:6px 0;
+}
+
+.aqi-fill{
+  height:100%;
+  width:0%;
+  transition:width .5s;
+  border-radius:10px;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(5px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== TOOLTIPS ===== */
+button[data-tip]:not(.mode){
+  position:relative;
+}
+
+button[data-tip]::after{
+  content:attr(data-tip);
+  position:absolute;
+  bottom:120%;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,0.8);
+  color:#fff;
+  padding:6px 10px;
+  font-size:11px;
+  border-radius:6px;
+  white-space:nowrap;
+  opacity:0;
+  pointer-events:none;
+  transition:.2s;
+  z-index:999;
+}
+
+button[data-tip]::before{
+  content:"";
+  position:absolute;
+  bottom:110%;
+  left:50%;
+  transform:translateX(-50%);
+  border:6px solid transparent;
+  border-top-color:rgba(0,0,0,0.8);
+  opacity:0;
+  transition:.2s;
+}
+
+button[data-tip]:hover::after,
+button[data-tip]:hover::before{
+  opacity:1;
+}
+
+/* ===== MODE TOOLTIP ===== */
+.mode::after,
+.mode::before{
+  position:fixed;
+}
+
+.mode::after{
+  content:attr(data-tip);
+  top:50px;
+  right:12px;
+  background:rgba(0,0,0,0.8);
+  color:#fff;
+  padding:6px 10px;
+  font-size:11px;
+  border-radius:6px;
+  opacity:0;
+  pointer-events:none;
+}
+
+.mode::before{
+  content:"";
+  top:44px;
+  right:22px;
+  border:6px solid transparent;
+  border-bottom-color:rgba(0,0,0,0.8);
+  opacity:0;
+}
+
+/* .mode:hover::after,
+.mode:hover::before{
+  opacity:1;
+} */
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 600px){
+
+  .search{
+    flex-wrap:wrap;
+  }
+
+  .search input{
+    width:100%;
+  }
+
+  .search button{
+    flex:1;
+  }
+
+  /* move mode button into app */
+  .app{
+    position:relative;
+  }
+
+  .mode{
+    position:absolute;
+    top:12px;
+    right:12px;
+    font-size:18px;
+  }
+
+  .mode::after{
+    top:44px;
+    right:12px;
+  }
+
+  .mode::before{
+    top:38px;
+    right:22px;
+  }
+}
