@@ -7,7 +7,7 @@ This project focuses not only on functionality but also on **real-world deployme
 ---
 
 ## 🚀 Live Demo
-🔗 Frontend: <add-your-frontend-link>  
+🔗 Frontend: https://ggthedeveloper.github.io/WeatherApp/ 
 🔗 Backend API: https://weatherapp-backend-7m69.onrender.com  
 
 ---
