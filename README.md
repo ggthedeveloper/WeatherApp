@@ -79,3 +79,5 @@ This project focuses not only on functionality but also on **real-world deployme
 │   └── .env
 
 ---
+## Developer
+Gaurav Gautam
