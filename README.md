@@ -80,4 +80,4 @@ This project focuses not only on functionality but also on **real-world deployme
 
 ---
 ## Developer
-- Gaurav Gautam
+Gaurav Gautam
